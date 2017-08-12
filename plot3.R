@@ -11,6 +11,8 @@ dataPower <- read.table(text = grep("^[1,2]/2/2007",readLines(files),value=TRUE)
 head(dataPower)
 
 #Now we are plotting our third graph
+SettingTime <-strptime(paste(dataPower$Date, dataPower$Time, sep=" "),"%d/%m/%Y %H:%M:%S")
+dataPower1 <- cbind(SettingTime, dataPower)
 png(filename = 'plot3.png', width = 480, height = 480, units='px')
 plot(SettingTime,dataPower1$Sub_metering_1, xlab = '', ylab = 'Energy sub metering', type = 'l')
 lines(SettingTime,dataPower1$Sub_metering_2,col="red")
