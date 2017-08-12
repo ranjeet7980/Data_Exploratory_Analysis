@@ -11,6 +11,8 @@ dataPower <- read.table(text = grep("^[1,2]/2/2007",readLines(files),value=TRUE)
 head(dataPower)
 
 #Now we are plotting our fourth graph
+SettingTime <-strptime(paste(dataPower$Date, dataPower$Time, sep=" "),"%d/%m/%Y %H:%M:%S")
+dataPower1 <- cbind(SettingTime, dataPower)
 png(filename = 'plot4.png', width = 480, height = 480, units='px')
 par(mfrow = c(2, 2))
 plot(SettingTime,dataPower1$Global_active_power, xlab = '', ylab = 'Global Active Power', type = 'l')
